@@ -4,6 +4,7 @@ let logger = require('morgan');
 let path = require('path');
 let bodyParser = require('body-parser');
 
+// require our routes
 let artistsRoutes = require('./controllers/artists_controller');
 let paintingsRoutes = require('./controllers/paintings_controller');
 
@@ -26,9 +27,26 @@ db.once('open', (callback) => {
   console.log('Mongoose Connected');
 });
 
-let router = express.Router();
-app.use(router);
+
 app.use('/paintings', paintingsRoutes);
+
+// let router = express.Router();
+// app.use(router);
+// do I need this and register routes below??
+
+// router.all('/', function(req, res, next){
+//   console.log('someone made a request!');
+//   next();
+// })
+
+// register routes
+// all routes that start with /artists, go to artistsRoutes path.
+app.use('/artists', artistsRoutes);
+
+// app.get('/artists', function( req, res, data){
+//   Artist.find();
+//   res.send(data);
+// });
 
 let server = app.listen(3000, () => {
   let host = server.address().address;
