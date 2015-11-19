@@ -18,13 +18,17 @@ let Artist = require('./models/artist');
 let Painting = require('./models/painting');
 
 let mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/museumdb');
+mongoose.connect('mongodb://localhost/museumrApp');
 
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
 db.once('open', (callback) => {
   console.log('Mongoose Connected');
 });
+
+let router = express.Router();
+app.use(router);
+app.use('/paintings', paintingsRoutes);
 
 let server = app.listen(3000, () => {
   let host = server.address().address;
