@@ -1,10 +1,11 @@
 {
   "name": "museum_app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Express/Node/MongoDB app",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "Cort Harlow and Maggie Love",
   "license": "ISC",
@@ -14,5 +15,14 @@
     "mongoose": "^4.2.6",
     "morgan": "^1.6.1",
     "path": "^0.12.7"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cortharlow/museum_app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cortharlow/museum_app/issues"
+  },
+  "homepage": "https://github.com/cortharlow/museum_app#readme"
 }
