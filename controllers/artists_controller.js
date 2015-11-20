@@ -58,10 +58,46 @@ router.route('/:id')
     // ends .findOne
   })
   // ends .get
+  // EDIT the artist
+  .put((req, res) => {
+    console.log('hit artist edit route!');
+    // let foundArtist = Artist.find({_id: req.params.id});
+    // test route -- define birthYear
+    Artist.find({_id: req.params.id}, function(err, artist){
+      // let birthYear = artist.birthYear
+      if (err) {
+        res.send(err);
+      }
+      // test case for curl command
+      artist[0].birthYear = 1907;
+      artist[0].save();
+      res.send(artist[0].name +  ' updated!');
+      // for (birthYear in artist) {
+        // artist[0].birthYear = 1907;
+      // }
+      // for (prop in req.body) {
+      //   artist[prop] = req.body[prop];
+      // }
+      // artist.save(function(err) {
+      //   if (err) {
+      //     res.send(err);
+      //   }
+      //   res.json( { message: 'Artist updated!'})
+      // })
+    })
+  })
+  // delete an artist
+  .delete((req, res) => {
+    console.log('hit delete route');
+    Artist.remove({_id: req.params.id}, (err, artist) => {
+      if (err) throw err;
+      res.send('Artist deleted!');
+    });
+  });
 
 
 // edit
-// router.route('/:id/edit')
+router.route('/:id/edit')
 
 
 
